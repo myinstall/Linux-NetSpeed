@@ -54,10 +54,10 @@ check_system() {
 
 is_root() {
     if [ 0 == $UID ]; then
-        echo -e "${OK} ${GreenBG} 当前用户是root用户，进入安装流程 ${Font}"
+        echo -e "${OK} ${GreenBG} 检测成功，当前用户是root用户，马上进入安装流程 ${Font}"
         sleep 3
     else
-        echo -e "${Error} ${RedBG} 当前用户不是root用户，请切换到使用 'sudo -i' 切换到root用户后重新执行脚本 ${Font}"
+        echo -e "${Error} ${RedBG} 当前用户不是root用户，请切换到使用 'sudo -i' 切换到root用户后重新执行 ${Font}"
         exit 1
     fi
 }
@@ -197,7 +197,7 @@ systemctl start sockd.service
 }
 
 connect() {
-	IP=$(curl http://ip.sb)
+	IP=$(curl http://ipv4.ip.sb)
 	echo "IP: $IP"
 	echo "端口：$port"
 	echo "账户：$user"
@@ -249,8 +249,8 @@ update_ss5() {
 
 
 menu() {
-    echo -e "\t ss5 安装管理脚本 "
-    echo -e "\tSystem Request:Debian 9+/Ubuntu 20.04+/Centos 7+"
+    echo -e "\t 老大tiktok跨境项目20221130 "
+    echo -e "\t 实例机系统要求System Request:Debian 9+/Ubuntu 20.04+/Centos 7+"
     
     echo -e "—————————————— 安装向导 ——————————————"
 
