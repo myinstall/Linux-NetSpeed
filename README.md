@@ -1,91 +1,9 @@
-赞助
-<br>
-支付宝
-<br>
-![20200312144201.png](https://vip1.loli.io/2020/03/12/7IJvKaTcrLBDbtz.png)
 
-[搬瓦工在线库存查询](https://bwg.ylx.me/)
-
-
-预先准备
-<br>
-centos：yum install ca-certificates wget -y && update-ca-trust force-enable
-<br>
-debian/ubuntu：apt-get install ca-certificates wget -y && update-ca-certificates
-
-不卸载内核版本
-<br>
-wget -O tcpx.sh "https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcpx.sh" && chmod +x tcpx.sh && ./tcpx.sh
-<br>
-卸载内核版本
-<br>
-wget -O tcp.sh "https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-
-关联action自动编译内核
-<br>
-https://github.com/ylx2016/kernel/
-
-双持bbr+锐速
-<br>
-bbr 添加
-<br>
-echo "net.core.default_qdisc=fq" >> /etc/sysctl.d/99-sysctl.conf
-<br>
-echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.d/99-sysctl.conf
-<br>
-sysctl -p
-
-编辑锐速文件
-<br>
-nano /appex/etc/config
-
-检测代码有BUG，如果锐速正常 运行查看
-<br>
-bash /appex/bin/lotServer.sh status | grep "LotServer"
-
-检查bbr 内核默认bbr算法不会有输出
-<br>
-lsmod | grep bbr
-
-检查centos安装内核
-<br>
-grubby --info=ALL|awk -F= '$1=="kernel" {print i++ " : " $2}'
-
-查看当前支持TCP算法
-<br>
-cat /proc/sys/net/ipv4/tcp_allowed_congestion_control
-<br>
-查看当前运行的算法
-<br>
-cat /proc/sys/net/ipv4/tcp_congestion_control
-<br>
-查看当前队列算法
-<br>
-sysctl net.core.default_qdisc
-
-命令： uname -a
-<br>
-作用： 查看系统内核版本号及系统名称
-
-命令： cat /proc/version
-<br>
-作用： 查看目录"/proc"下version的信息，也可以得到当前系统的内核版本号及系统名称
-
-真实队列查看？ 更改队列算法可能需要重启生效
-<br>
-tc -s qdisc show
-
-/etc/sysctl.d/99-sysctl.conf
-<br>
-sysctl --system
-
-ylx2016与chiakge、cx9208无任何关系
-<br>
 bbsplus算法原作者
 <br>
 https://blog.csdn.net/dog250/article/details/80629551
 <br>
-bbrplus首用名 ？
+bbrplus首用名 
 <br>
 https://github.com/cx9208/bbrplus
 <br>
